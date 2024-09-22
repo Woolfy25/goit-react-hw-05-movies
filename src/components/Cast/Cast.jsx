@@ -1,7 +1,7 @@
-import { fetchMovieCast } from "../../api/api";
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import Loader from "../../components/Loader/Loader";
+import { fetchMovieCast } from '../../api/api';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import Loader from '../../components/Loader/Loader';
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -22,14 +22,14 @@ const Cast = () => {
       }
     };
     getCast();
-  }, []);
+  }, [movieId]);
 
   return (
     <>
       {loading && <Loader />}
       {error && <div>{error}</div>}
       <ul>
-        {movie.map((cast) => (
+        {movie.map(cast => (
           <li key={cast.id}>
             <img
               src={`https://image.tmdb.org/t/p/w300${cast.profile_path}`}

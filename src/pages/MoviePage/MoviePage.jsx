@@ -1,14 +1,13 @@
-import css from "./MoviePage.module.css";
-import { fetchMovieDeatils } from "../../api/api";
-import { useState, useEffect } from "react";
+import { fetchMovieDeatils } from '../../api/api';
+import { useState, useEffect } from 'react';
 import {
   useParams,
   Link,
   Outlet,
   useLocation,
   useNavigate,
-} from "react-router-dom";
-import Loader from "../../components/Loader/Loader";
+} from 'react-router-dom';
+import Loader from '../../components/Loader/Loader';
 
 const MoviePage = () => {
   const [loading, setLoading] = useState(false);
@@ -17,7 +16,7 @@ const MoviePage = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const handleClick = () => navigate(location?.state?.from ?? "/");
+  const handleClick = () => navigate(location?.state?.from ?? '/');
 
   const { movieId } = useParams();
   useEffect(() => {
