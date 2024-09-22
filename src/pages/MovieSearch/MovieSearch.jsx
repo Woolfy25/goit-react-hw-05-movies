@@ -1,16 +1,15 @@
-import css from "./MovieSearch.module.css";
-import { useState, useEffect } from "react";
-import { fetchMovieSearch } from "../../api/api";
-import { useLocation } from "react-router-dom";
-import MovieList from "../../components/MovieList/MovieList";
-import Loader from "../../components/Loader/Loader";
+import { useState, useEffect } from 'react';
+import { fetchMovieSearch } from '../../api/api';
+import { useLocation } from 'react-router-dom';
+import MovieList from '../../components/MovieList/MovieList';
+import Loader from '../../components/Loader/Loader';
 
 const MovieSearch = () => {
   const location = useLocation();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [movies, setMovies] = useState([]);
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
     const getMovies = async () => {
@@ -27,7 +26,7 @@ const MovieSearch = () => {
     getMovies();
   }, [query]);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     event.preventDefault();
     setQuery(event.target.elements[0].value);
   };
@@ -40,7 +39,7 @@ const MovieSearch = () => {
         <input
           type="text"
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={e => setQuery(e.target.value)}
         />
         <button type="submit">Search</button>
       </form>
