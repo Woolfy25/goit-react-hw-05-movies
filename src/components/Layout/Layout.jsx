@@ -1,21 +1,21 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import styles from './Layout.module.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import css from "./Layout.module.css";
 
 const Layout = ({ children }) => {
   return (
     <div>
-      <header>
-        <nav className={styles.nav}>
-          <NavLink to="/" className={styles.navLink}>
+      <div className={css.header}>
+        <nav className={css.nav}>
+          <Link className={css.link} to="/">
             Home
-          </NavLink>
-          <NavLink to="/movies" className={styles.navLink}>
+          </Link>
+          <Link className={css.link} to="/search">
             Movies
-          </NavLink>
+          </Link>
         </nav>
-      </header>
-      <main>{children}</main>
+      </div>
+      <main className={css.main}>{children}</main>
     </div>
   );
 };

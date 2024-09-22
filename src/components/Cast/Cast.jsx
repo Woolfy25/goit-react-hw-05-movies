@@ -1,54 +1,44 @@
-import Loader from 'components/Loader/Loader';
-import React, { useEffect } from 'react';
-import { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { fetchMovieCast } from 'services/api';
-import styles from './Cast.module.css';
+import { fetchMovieCast } from "../../api/api";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import Loader from "../../components/Loader/Loader";
 
 const Cast = () => {
   const { movieId } = useParams();
-  const [cast, setCast] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [movie, setMovie] = useState([]);
 
   useEffect(() => {
-    setIsLoading(true);
-    const MovieCast = async () => {
+    const getCast = async () => {
       try {
-        setIsLoading(true);
-        const movie = await fetchMovieCast(movieId);
-        setCast(movie);
+        setLoading(true);
+        const cast = await fetchMovieCast(movieId);
+        setMovie(cast);
       } catch (error) {
-        setError('Something went wrong...');
+        setError(error);
       } finally {
-        setIsLoading(false);
+        setLoading(false);
       }
     };
-    MovieCast();
-  }, [movieId]);
+    getCast();
+  }, []);
 
   return (
     <>
-      {isLoading && <Loader />}
+      {loading && <Loader />}
       {error && <div>{error}</div>}
-      <ul className={styles.castList}>
-        {Array.isArray(cast) &&
-          cast?.map(castEl => {
-            return (
-              <li key={castEl.id} className={styles.castItem}>
-                <img
-                  src={
-                    castEl.profile_path
-                      ? `https://image.tmdb.org/t/p/w300${castEl.profile_path}`
-                      : {error}
-                  }
-                  alt={`${castEl.name} portrait`}
-                />
-                <p className={styles.name}>{castEl.name}</p>
-                <p className={styles.character}>{castEl.character} </p>
-              </li>
-            );
-          })}
+      <ul>
+        {movie.map((cast) => (
+          <li key={cast.id}>
+            <img
+              src={`https://image.tmdb.org/t/p/w300${cast.profile_path}`}
+              alt={`${cast.name} portrait`}
+            />
+            <p>{cast.name}</p>
+            <p>{cast.character} </p>
+          </li>
+        ))}
       </ul>
     </>
   );

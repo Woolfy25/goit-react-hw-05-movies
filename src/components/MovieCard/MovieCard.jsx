@@ -1,15 +1,13 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import styles from './MovieCard.module.css';
+import css from "./MovieCard.module.css";
+import { Link } from "react-router-dom";
 
-function MovieCard({ movie, prevLocation }) {
+const MovieCard = ({ movie, prevLocation }) => {
   return (
-    <li className={styles.movieItem}>
+    <li className={css.movieLink}>
       <Link
         to={`/movies/${movie.id}`}
         state={{ from: prevLocation }}
-        className={styles.movieLink}
+        className={css.movieList}
       >
         <img
           src={
@@ -18,22 +16,12 @@ function MovieCard({ movie, prevLocation }) {
               : {}
           }
           alt={movie.title || movie.name}
-          className={styles.movieImage}
+          className={css.movieImage}
         />
-        <p className={styles.movieTitle}>{movie.title || movie.name}</p>
+        <p className={css.movieTitle}>{movie.title || movie.name}</p>
       </Link>
     </li>
   );
-}
-
-MovieCard.propTypes = {
-  movie: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string,
-    name: PropTypes.string,
-    posterPath: PropTypes.string,
-  }).isRequired,
-  prevLocation: PropTypes.object.isRequired,
 };
 
 export default MovieCard;

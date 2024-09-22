@@ -1,48 +1,40 @@
-import Loader from 'components/Loader/Loader';
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { fetchMovieReviews } from 'services/api';
-import styles from './Reviews.module.css';
+import { fetchMovieReviews } from "../../api/api";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import Loader from "../../components/Loader/Loader";
 
 const Reviews = () => {
   const { movieId } = useParams();
-  const [reviews, setReviews] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [movie, setMovie] = useState([]);
 
   useEffect(() => {
-    setIsLoading(true);
-    const MovieReviews = async () => {
+    const getReviews = async () => {
       try {
-        setIsLoading(true);
-        const movie = await fetchMovieReviews(movieId);
-        setReviews(movie);
-      } catch (error) {
-        setError('Something went wrong...');
+        setLoading(true);
+        const reviews = await fetchMovieReviews(movieId);
+        setMovie(reviews);
+      } catch (cast) {
+        setError(setError);
       } finally {
-        setIsLoading(false);
+        setLoading(false);
       }
     };
-    MovieReviews();
-  }, [movieId]);
+    getReviews();
+  });
 
   return (
-    <>
-      {isLoading && <Loader />}
+    <ul>
+      {loading && <Loader />}
       {error && <div>{error}</div>}
-      {reviews.length > 0 ? (
-        <ul className={styles.reviewList}>
-          {reviews.map(review => (
-            <li key={review.id} className={styles.reviewItem}>
-              <h3 className={styles.reviewAuthor}>Author: {review.author} </h3>
-              <p className={styles.reviewContent}>{review.content}</p>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <h2>We don't have any reviews for this movie.</h2>
-      )}
-    </>
+      {movie.map((reviews) => (
+        <li key={reviews.id}>
+          <h3>Author: {reviews.author} </h3>
+          <p>{reviews.content}</p>
+        </li>
+      ))}
+    </ul>
   );
 };
 

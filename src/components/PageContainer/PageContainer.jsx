@@ -1,8 +1,8 @@
-import React from 'react';
-import styles from './PageContainer.module.css';
+import React from "react";
+import css from "./PageContainer.module.css";
 
 const PageContainer = ({ children }) => {
-  return <div className={styles.container}>{children}</div>;
+  return <div className={css.container}>{children}</div>;
 };
 
 export default PageContainer;

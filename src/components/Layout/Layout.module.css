@@ -1,12 +1,25 @@
-.nav {
-  padding: 15px 0;
-  text-align: start;
+.header {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-.navLink {
+.nav {
+  width: 200px;
+  gap: 50px;
+  display: flex;
+  flex-direction: row;
+}
+
+.link {
+  font-size: 20px;
   text-decoration: none;
   color: black;
-  margin: 0 10px;
-  font-size: 16px;
-  transition: color 0.3s;
+}
+
+.main {
+  width: 100%;
+  display: flex;
 }

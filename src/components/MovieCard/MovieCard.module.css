@@ -1,27 +1,15 @@
-.movieItem {
-  margin: 10px;
-  width: 250px;
-  border: 1px solid black;
-  overflow: hidden;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
 .movieLink {
-  text-decoration: none;
-  color: #333;
-  display: block;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .movieImage {
   width: 100%;
-  height: auto;
-  border-bottom: 1px solid black;
 }
 
 .movieTitle {
-  padding: 10px;
-  margin: 0;
   font-size: 16px;
-  text-align: center;
-  font-weight: bold;
+  width: 100%;
 }
