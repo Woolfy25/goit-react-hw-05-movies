@@ -23,7 +23,7 @@ const Reviews = () => {
       }
     };
     getReviews();
-  }, []);
+  }, [movieId]);
 
   return (
     <ul className={css.list}>
