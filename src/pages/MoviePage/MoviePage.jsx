@@ -8,6 +8,7 @@ import {
   useNavigate,
 } from 'react-router-dom';
 import Loader from '../../components/Loader/Loader';
+import css from './MoviePage.module.css';
 
 const MoviePage = () => {
   const [loading, setLoading] = useState(false);
@@ -35,19 +36,27 @@ const MoviePage = () => {
   }, [movieId]);
 
   return (
-    <div>
+    <div className={css.container}>
       {loading && <Loader />}
       {error && <div>{error}</div>}
       {movie && (
-        <div>
-          <div>
-            <button type="button" onClick={() => navigate(-1)}>
+        <div className={css.movieContainer}>
+          <div className={css.movie}>
+            <button
+              className={css.backButton}
+              type="button"
+              onClick={() => navigate(-1)}
+            >
               Go Back Simple
             </button>
-            <button type="button" onClick={handleClick}>
+            <button
+              className={css.backButton}
+              type="button"
+              onClick={handleClick}
+            >
               Go Back
             </button>
-            <div>
+            <div className={movie.details}>
               <img
                 src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}
                 alt=""
@@ -57,10 +66,14 @@ const MoviePage = () => {
               <p>{movie.release_date}</p>
             </div>
           </div>
-          <div>
+          <div className={css.info}>
             <h3>Additional Information</h3>
-            <Link to="cast">Cast</Link>
-            <Link to="reviews">Reviews</Link>
+            <Link className={css.infoLink} to="cast">
+              Cast
+            </Link>
+            <Link className={css.infoLink} to="reviews">
+              Reviews
+            </Link>
           </div>
           <Outlet />
         </div>

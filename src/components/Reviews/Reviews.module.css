@@ -1,0 +1,14 @@
+.list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.listElement {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 1000px;
+  gap: 10px;
+}

@@ -2,6 +2,7 @@ import { fetchMovieCast } from '../../api/api';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Loader from '../../components/Loader/Loader';
+import css from './Cast.module.css';
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -28,9 +29,9 @@ const Cast = () => {
     <>
       {loading && <Loader />}
       {error && <div>{error}</div>}
-      <ul>
+      <ul className={css.castList}>
         {movie.map(cast => (
-          <li key={cast.id}>
+          <li key={cast.id} className={css.castItem}>
             <img
               src={`https://image.tmdb.org/t/p/w300${cast.profile_path}`}
               alt={`${cast.name} portrait`}

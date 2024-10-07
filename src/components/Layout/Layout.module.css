@@ -4,11 +4,13 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  background-color: blueviolet;
 }
 
 .nav {
-  width: 200px;
-  gap: 50px;
+  padding-left: 20px;
+  width: 300px;
+  gap: 80px;
   display: flex;
   flex-direction: row;
 }
@@ -17,9 +19,9 @@
   font-size: 20px;
   text-decoration: none;
   color: black;
+  color: white;
 }
 
 .main {
   width: 100%;
-  display: flex;
 }

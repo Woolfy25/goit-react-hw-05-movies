@@ -1,9 +1,10 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { fetchTrending } from "../../api/api";
-import { useLocation } from "react-router-dom";
-import Loader from "../../components/Loader/Loader";
-import MovieList from "../../components/MovieList/MovieList";
+import React from 'react';
+import css from './HomPage.module.css';
+import { useState, useEffect } from 'react';
+import { fetchTrending } from '../../api/api';
+import { useLocation } from 'react-router-dom';
+import Loader from '../../components/Loader/Loader';
+import MovieList from '../../components/MovieList/MovieList';
 
 const HomePage = () => {
   const location = useLocation();
@@ -27,10 +28,10 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div>
+    <div className={css.main}>
       {loading && <Loader />}
       {error && <div>{error}</div>}
-      <h1>Trending Now</h1>
+      <h1 className={css.title}>Trending Now</h1>
       <MovieList movies={movies} prevLocation={location}></MovieList>
     </div>
   );

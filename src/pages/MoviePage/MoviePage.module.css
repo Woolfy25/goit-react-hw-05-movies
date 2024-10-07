@@ -1,0 +1,45 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 30px 20px;
+}
+
+.movieContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.movie {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.backButton {
+  background-color: blueviolet;
+  color: white;
+  width: 100px;
+  border: none;
+}
+
+.details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.infoLink {
+  list-style: none;
+  text-decoration: underline;
+  color: black;
+}

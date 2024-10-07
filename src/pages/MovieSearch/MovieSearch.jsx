@@ -3,6 +3,7 @@ import { fetchMovieSearch } from '../../api/api';
 import { useLocation } from 'react-router-dom';
 import MovieList from '../../components/MovieList/MovieList';
 import Loader from '../../components/Loader/Loader';
+import css from './MovieSearch.module.css';
 
 const MovieSearch = () => {
   const location = useLocation();
@@ -32,16 +33,19 @@ const MovieSearch = () => {
   };
 
   return (
-    <div>
+    <div className={css.container}>
       {loading && <Loader />}
       {error && <div>{error}</div>}
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={css.form}>
         <input
+          className={css.input}
           type="text"
           value={query}
           onChange={e => setQuery(e.target.value)}
         />
-        <button type="submit">Search</button>
+        <button type="submit" className={css.button}>
+          Search
+        </button>
       </form>
 
       <MovieList movies={movies} prevLocation={location} />
